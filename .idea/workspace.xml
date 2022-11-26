@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48ade961-f938-4f0f-a2ef-875812a4c703" name="Changes" comment="First method done" />
+    <list default="true" id="48ade961-f938-4f0f-a2ef-875812a4c703" name="Changes" comment="First method done">
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/ReservationManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/object/Bus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/object/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/object/Hotel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/object/Reservation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/dao/ReservationManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/InsertObjectsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/InsertObjectsManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/JDBCUtilsByDruid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/JDBCUtilsByDruid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/expection/FailToDoneSqlException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/expection/HaveRegisteredException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/expection/HaveRegisteredException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/object/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/object/Flight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dao/InsertObjectsManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dao/InsertObjectsManagerTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,26 +56,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit3",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3": "junit.framework.TestCase",
-    "last_opened_file_path": "D:/Code/Java/TravelManager/src/main/resources",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "MavenSettings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit3&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3&quot;: &quot;junit.framework.TestCase&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Code/Java/TravelManager/src/main/resources&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Code\Java\TravelManager\src\main\resources" />
@@ -76,7 +90,7 @@
       <recent name="dao" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.ReservationManagerTest.testAddReservation">
     <configuration name="InsertObjectsManagerTest.testAddObjectAbleToRegister" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TravelManager" />
       <extension name="coverage">
@@ -93,8 +107,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ReservationManagerTest.testAddReservation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TravelManager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dao" />
+      <option name="MAIN_CLASS_NAME" value="dao.ReservationManagerTest" />
+      <option name="METHOD_NAME" value="testAddReservation" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ReservationManagerTest.testAddReservation" />
         <item itemvalue="JUnit.InsertObjectsManagerTest.testAddObjectAbleToRegister" />
       </list>
     </recent_temporary>
@@ -107,7 +138,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1669436685806</updated>
-      <workItem from="1669436687081" duration="7468000" />
+      <workItem from="1669436687081" duration="9235000" />
+      <workItem from="1669466869271" duration="5735000" />
     </task>
     <task id="LOCAL-00001" summary="First method done">
       <created>1669444146816</created>
@@ -116,7 +148,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669444146816</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="First method done">
+      <created>1669444470195</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1669444470195</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

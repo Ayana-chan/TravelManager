@@ -11,6 +11,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
+/**
+ * 涉及数据库操作的都以此类为父类
+ * 类被加载的时候自动生成连接池
+ */
 public class JDBCUtilsByDruid {
     private static DataSource ds;
     static {//静态代码初始化ds

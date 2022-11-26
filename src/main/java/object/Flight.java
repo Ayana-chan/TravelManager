@@ -8,6 +8,7 @@ public class Flight implements ObjectAbleToRegister{
     private String fromCity;
     private String arivCity;
 
+    //插入
     public Flight(String flightNum, int price, int numSeats, String fromCity, String arivCity) {
         this.flightNum = flightNum;
         this.price = price;
@@ -16,8 +17,27 @@ public class Flight implements ObjectAbleToRegister{
         this.fromCity = fromCity;
         this.arivCity = arivCity;
     }
+    //读取
+    public Flight(String flightNum, int price, int numSeats, int numAvail, String fromCity, String arivCity) {
+        this.flightNum = flightNum;
+        this.price = price;
+        this.numSeats = numSeats;
+        this.numAvail = numAvail;
+        this.fromCity = fromCity;
+        this.arivCity = arivCity;
+    }
 
-
+    @Override
+    public String toString() {
+        return "Flight{" +
+                "flightNum='" + flightNum + '\'' +
+                ", price=" + price +
+                ", numSeats=" + numSeats +
+                ", numAvail=" + numAvail +
+                ", fromCity='" + fromCity + '\'' +
+                ", arivCity='" + arivCity + '\'' +
+                '}';
+    }
 
     //get
 
