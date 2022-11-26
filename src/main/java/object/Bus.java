@@ -11,7 +11,6 @@ public class Bus implements ObjectAbleToRegister{
         this.location = location;
         this.price = price;
         this.numBus = numBus;
-        this.numAvail = numBus;
     }
     //读取
     public Bus(String location, int price, int numBus, int numAvail) {

@@ -13,7 +13,6 @@ public class Flight implements ObjectAbleToRegister{
         this.flightNum = flightNum;
         this.price = price;
         this.numSeats = numSeats;
-        this.numAvail = numSeats;
         this.fromCity = fromCity;
         this.arivCity = arivCity;
     }

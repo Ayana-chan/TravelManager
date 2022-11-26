@@ -11,7 +11,6 @@ public class Hotel implements ObjectAbleToRegister{
         this.location = location;
         this.price = price;
         this.numRooms = numRooms;
-        this.numAvail = numRooms;
     }
     //读取
     public Hotel(String location, int price, int numRooms, int numAvail) {

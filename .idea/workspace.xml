@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48ade961-f938-4f0f-a2ef-875812a4c703" name="Changes" comment="addReservation complete">
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/ReservationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/ReservationManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/BusManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/CustomerManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/FlightManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/HotelManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/InsertObjectsManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/object/Bus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/object/Bus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/object/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/object/Flight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/object/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/object/Hotel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dao/InsertObjectsManagerTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +26,8 @@
       <list>
         <option value="Interface" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="JUnit3 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -78,7 +87,7 @@
       <recent name="dao" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ReservationManagerTest.testAddReservation">
+  <component name="RunManager" selected="JUnit.InsertObjectsManagerTest.testAddObjectAbleToRegister">
     <configuration name="InsertObjectsManagerTest.testAddObjectAbleToRegister" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TravelManager" />
       <extension name="coverage">
@@ -113,8 +122,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ReservationManagerTest.testAddReservation" />
         <item itemvalue="JUnit.InsertObjectsManagerTest.testAddObjectAbleToRegister" />
+        <item itemvalue="JUnit.ReservationManagerTest.testAddReservation" />
       </list>
     </recent_temporary>
   </component>
@@ -127,7 +136,7 @@
       <option name="presentableId" value="Default" />
       <updated>1669436685806</updated>
       <workItem from="1669436687081" duration="9235000" />
-      <workItem from="1669466869271" duration="6001000" />
+      <workItem from="1669466869271" duration="8534000" />
     </task>
     <task id="LOCAL-00001" summary="First method done">
       <created>1669444146816</created>
@@ -150,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669472689047</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="addReservation complete">
+      <created>1669472941702</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1669472941702</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
