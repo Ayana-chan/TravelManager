@@ -41,7 +41,14 @@ public class ReservationManager extends JDBCUtilsByDruid{
         return true;
     }
 
-    private boolean judgeAvailable(int resvType,String resvObject){
+    /**
+     * 用于在增加预订时看看是否可以预订
+     * @param resvType
+     * @param resvObject
+     * @return 无空位时返回false
+     * @throws RuntimeException resvType错误或者resvObject找不到都会抛出RuntimeException
+     */
+    private boolean judgeAvailable(int resvType,String resvObject) throws RuntimeException{
         Connection connection = null;
         ResultSet resultSet=null;
         PreparedStatement preparedStatement = null;
