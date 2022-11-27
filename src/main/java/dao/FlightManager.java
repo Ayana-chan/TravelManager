@@ -57,9 +57,8 @@ public class FlightManager extends JDBCUtilsByDruid{
         try {
             connection=getConnection();
 
-            //查询是否已注册
-            String sql_ask="select * FROM flights";
-            preparedStatement = connection.prepareStatement(sql_ask);
+            String sql="select * FROM flights";
+            preparedStatement = connection.prepareStatement(sql);
 
             resultSet=preparedStatement.executeQuery();
 

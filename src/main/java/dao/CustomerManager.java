@@ -1,15 +1,19 @@
 package dao;
 
 import dao.expection.HaveRegisteredException;
+import dao.expection.InsufficientSpaceException;
+import dao.expection.TargetNotFoundException;
 import object.Customer;
+import object.Flight;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class CustomerManager extends JDBCUtilsByDruid{
-    private void registerCustomer(Customer customer) throws HaveRegisteredException {
+    public void registerCustomer(Customer customer) throws HaveRegisteredException {
         Connection connection = null;
         ResultSet resultSet=null;
         PreparedStatement preparedStatement = null;
@@ -34,6 +38,70 @@ public class CustomerManager extends JDBCUtilsByDruid{
 
                 preparedStatement.executeUpdate();
             }
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            close(resultSet,preparedStatement,connection);
+        }
+    }
+
+    public ArrayList<Customer> searchAllCustomer(){
+        ArrayList<Customer> customers=new ArrayList<>();
+
+        Connection connection = null;
+        ResultSet resultSet=null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            connection=getConnection();
+
+            String sql="select * FROM customers";
+            preparedStatement = connection.prepareStatement(sql);
+
+            resultSet=preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                Customer newCustomer=new Customer(resultSet.getString("custName"),resultSet.getString("custID"));
+                customers.add(newCustomer);
+            }
+
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            close(resultSet,preparedStatement,connection);
+        }
+        return customers;
+    }
+
+    public void modifyCustomer(Customer newCustomer) throws InsufficientSpaceException {
+        Connection connection = null;
+        ResultSet resultSet=null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            connection=getConnection();
+
+            //查询是否存在
+            String sql_ask="select * FROM customers where custName=?";
+            preparedStatement = connection.prepareStatement(sql_ask);
+            preparedStatement.setString(1,newCustomer.getCustName());
+
+            resultSet=preparedStatement.executeQuery();
+
+            if(!resultSet.next()) {
+                throw new TargetNotFoundException();
+            }
+
+            //更新
+            String sql="update customers " +
+                    "set custID=? " +
+                    "where custName=?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1,newCustomer.getCustID());
+            preparedStatement.setString(2,newCustomer.getCustName());
+
+            preparedStatement.executeUpdate();
+
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }finally {

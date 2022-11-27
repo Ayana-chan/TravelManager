@@ -15,6 +15,8 @@ public class FlightManagerTest extends TestCase {
         FlightManager flightManager=new FlightManager();
         try {
             flightManager.registerFlight(flight1);
+        }catch (HaveRegisteredException ignored){}
+        try {
             flightManager.registerFlight(flight2);
         }catch (HaveRegisteredException ignored){}
     }
