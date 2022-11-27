@@ -8,6 +8,8 @@ public class ReservationManagerTest extends TestCase {
     public void testAddReservation() {
         Reservation reservation=new Reservation("李田所",1,"F1");
         ReservationManager reservationManager=new ReservationManager();
-        reservationManager.addReservation(reservation);
+        for(int i=0;i<3;i++) {
+            reservationManager.addReservation(reservation);
+        }
     }
 }

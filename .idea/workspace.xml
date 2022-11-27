@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48ade961-f938-4f0f-a2ef-875812a4c703" name="Changes" comment="addReservation complete">
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/BusManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/CustomerManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/FlightManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/HotelManager.java" afterDir="false" />
+    <list default="true" id="48ade961-f938-4f0f-a2ef-875812a4c703" name="Changes" comment="auto set numAvail. create 4 manager">
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/expection/InsufficientSpaceException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/expection/TargetNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/dao/FlightManagerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/InsertObjectsManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/object/Bus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/object/Bus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/object/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/object/Flight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/object/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/object/Hotel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/dao/InsertObjectsManagerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/FlightManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/FlightManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dao/ReservationManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dao/ReservationManagerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +22,8 @@
       <list>
         <option value="Interface" />
         <option value="Enum" />
-        <option value="JUnit3 Test Class" />
         <option value="Class" />
+        <option value="JUnit3 Test Class" />
       </list>
     </option>
   </component>
@@ -87,8 +83,8 @@
       <recent name="dao" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.InsertObjectsManagerTest.testAddObjectAbleToRegister">
-    <configuration name="InsertObjectsManagerTest.testAddObjectAbleToRegister" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.FlightManagerTest.testModifyFlight">
+    <configuration name="FlightManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TravelManager" />
       <extension name="coverage">
         <pattern>
@@ -97,8 +93,55 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="dao" />
-      <option name="MAIN_CLASS_NAME" value="dao.InsertObjectsManagerTest" />
-      <option name="METHOD_NAME" value="testAddObjectAbleToRegister" />
+      <option name="MAIN_CLASS_NAME" value="dao.FlightManagerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FlightManagerTest.testModifyFlight" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TravelManager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dao" />
+      <option name="MAIN_CLASS_NAME" value="dao.FlightManagerTest" />
+      <option name="METHOD_NAME" value="testModifyFlight" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FlightManagerTest.testRegisterFlight" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TravelManager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dao" />
+      <option name="MAIN_CLASS_NAME" value="dao.FlightManagerTest" />
+      <option name="METHOD_NAME" value="testRegisterFlight" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FlightManagerTest.testSearchAllFlight" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TravelManager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dao" />
+      <option name="MAIN_CLASS_NAME" value="dao.FlightManagerTest" />
+      <option name="METHOD_NAME" value="testSearchAllFlight" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -122,8 +165,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.InsertObjectsManagerTest.testAddObjectAbleToRegister" />
+        <item itemvalue="JUnit.FlightManagerTest.testModifyFlight" />
         <item itemvalue="JUnit.ReservationManagerTest.testAddReservation" />
+        <item itemvalue="JUnit.FlightManagerTest" />
+        <item itemvalue="JUnit.FlightManagerTest.testSearchAllFlight" />
+        <item itemvalue="JUnit.FlightManagerTest.testRegisterFlight" />
       </list>
     </recent_temporary>
   </component>
@@ -136,7 +182,8 @@
       <option name="presentableId" value="Default" />
       <updated>1669436685806</updated>
       <workItem from="1669436687081" duration="9235000" />
-      <workItem from="1669466869271" duration="8534000" />
+      <workItem from="1669466869271" duration="9114000" />
+      <workItem from="1669522245632" duration="3191000" />
     </task>
     <task id="LOCAL-00001" summary="First method done">
       <created>1669444146816</created>
@@ -166,7 +213,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669472941702</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="auto set numAvail. create 4 manager">
+      <created>1669479635312</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1669479635312</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,6 +240,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First method done" />
     <MESSAGE value="addReservation complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="addReservation complete" />
+    <MESSAGE value="auto set numAvail. create 4 manager" />
+    <option name="LAST_COMMIT_MESSAGE" value="auto set numAvail. create 4 manager" />
   </component>
 </project>
