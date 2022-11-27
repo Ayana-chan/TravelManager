@@ -1,11 +1,14 @@
 package dao;
 
+import javafx.util.Pair;
+import object.Flight;
 import object.Reservation;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ReservationManager extends JDBCUtilsByDruid{
     /**
@@ -39,6 +42,37 @@ public class ReservationManager extends JDBCUtilsByDruid{
             close(resultSet,preparedStatement,connection);
         }
         return true;
+    }
+
+    public ArrayList<Pair<String,String>> searchOwnReservation(String customerName) {
+        ArrayList<Pair<String,String>> journeys = new ArrayList<>();
+
+        Connection connection = null;
+        ResultSet resultSet = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            connection = getConnection();
+
+            //查找指定用户预订的所有航班
+            String sql_resv = "select fromCity,arivCity " +
+                    "from (reservations join flights on resvType=1 and resvObject=flightNum) " +
+                    "where custName=?";
+            preparedStatement = connection.prepareStatement(sql_resv);
+
+            preparedStatement.setString(1,customerName);
+
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                journeys.add(new Pair<>(resultSet.getString("fromCity"),resultSet.getString("arivCity")));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            close(resultSet, preparedStatement, connection);
+        }
+        return journeys;
     }
 
     /**

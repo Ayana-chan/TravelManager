@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48ade961-f938-4f0f-a2ef-875812a4c703" name="Changes" comment="FlightManager done">
-      <change afterPath="$PROJECT_DIR$/src/test/java/dao/BusManagerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/dao/CustomerManagerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/dao/HotelManagerTest.java" afterDir="false" />
+    <list default="true" id="48ade961-f938-4f0f-a2ef-875812a4c703" name="Changes" comment="4 Managers done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/BusManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/BusManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/CustomerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/CustomerManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/FlightManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/FlightManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/HotelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/HotelManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/dao/FlightManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dao/FlightManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/ReservationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/ReservationManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dao/ReservationManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dao/ReservationManagerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +80,7 @@
       <recent name="dao" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.HotelManagerTest">
+  <component name="RunManager" selected="JUnit.ReservationManagerTest.testSearchOwnReservation">
     <configuration name="BusManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TravelManager" />
       <extension name="coverage">
@@ -134,22 +128,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CustomerManagerTest.testModifyCustomer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="TravelManager" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="dao" />
-      <option name="MAIN_CLASS_NAME" value="dao.CustomerManagerTest" />
-      <option name="METHOD_NAME" value="testModifyCustomer" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="HotelManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TravelManager" />
       <extension name="coverage">
@@ -165,13 +143,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ReservationManagerTest.testSearchOwnReservation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TravelManager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dao" />
+      <option name="MAIN_CLASS_NAME" value="dao.ReservationManagerTest" />
+      <option name="METHOD_NAME" value="testSearchOwnReservation" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ReservationManagerTest.testSearchOwnReservation" />
         <item itemvalue="JUnit.HotelManagerTest" />
         <item itemvalue="JUnit.BusManagerTest.testModifyBus" />
         <item itemvalue="JUnit.BusManagerTest.testSearchAllBus" />
         <item itemvalue="JUnit.BusManagerTest" />
-        <item itemvalue="JUnit.CustomerManagerTest.testModifyCustomer" />
       </list>
     </recent_temporary>
   </component>
@@ -185,7 +179,8 @@
       <updated>1669436685806</updated>
       <workItem from="1669436687081" duration="9235000" />
       <workItem from="1669466869271" duration="9114000" />
-      <workItem from="1669522245632" duration="6352000" />
+      <workItem from="1669522245632" duration="6610000" />
+      <workItem from="1669552692858" duration="1773000" />
     </task>
     <task id="LOCAL-00001" summary="First method done">
       <created>1669444146816</created>
@@ -229,7 +224,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669525569174</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="4 Managers done">
+      <created>1669528816339</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1669528816339</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,6 +253,7 @@
     <MESSAGE value="addReservation complete" />
     <MESSAGE value="auto set numAvail. create 4 manager" />
     <MESSAGE value="FlightManager done" />
-    <option name="LAST_COMMIT_MESSAGE" value="FlightManager done" />
+    <MESSAGE value="4 Managers done" />
+    <option name="LAST_COMMIT_MESSAGE" value="4 Managers done" />
   </component>
 </project>
