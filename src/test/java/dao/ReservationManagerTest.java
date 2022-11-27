@@ -18,7 +18,7 @@ public class ReservationManagerTest extends TestCase {
 
     public void testSearchOwnReservation() {
         ReservationManager reservationManager=new ReservationManager();
-        ArrayList<Pair<String,String>> journeys=reservationManager.searchOwnReservation("李田所");
+        ArrayList<Pair<String,String>> journeys=reservationManager.searchOwnJourney("李田所");
         System.out.println("SearchOwnReservation:");
         for(Pair<String,String> j:journeys){
             System.out.println(j);

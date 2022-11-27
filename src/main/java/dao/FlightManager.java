@@ -10,8 +10,45 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Queue;
+import java.util.Set;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class FlightManager extends JDBCUtilsByDruid{
+    /**
+     * 获得fromCity为startPlace的所有航班的目的地，即startPlace的所有下一站
+     * @param fromCity
+     * @return
+     */
+    public static Set<String> findNextArivCitySet(String fromCity){
+        Set<String> arivCities=new HashSet<>();
+
+        Connection connection = null;
+        ResultSet resultSet=null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            connection=getConnection();
+
+            String sql="select arivCity FROM flights where fromCity=?";
+            preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1,fromCity);
+
+            resultSet=preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                arivCities.add(resultSet.getString(1));
+            }
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            close(resultSet,preparedStatement,connection);
+        }
+        return arivCities;
+    }
+
     public void registerFlight(Flight flight) throws HaveRegisteredException {
         Connection connection = null;
         ResultSet resultSet=null;
@@ -125,4 +162,47 @@ public class FlightManager extends JDBCUtilsByDruid{
             close(resultSet,preparedStatement,connection);
         }
     }
+
+    public boolean judgeAccessible(String startPlace,String endPlace){
+        Set<String> visited=new HashSet<>();
+        Queue<String> queue=new LinkedBlockingQueue<>();
+        queue.add(startPlace);
+        while(!queue.isEmpty()){
+            //出队
+            String fromCity=queue.poll();
+            Set<String> arivCities=findNextArivCitySet(fromCity);
+            //若可找到
+            if(arivCities.contains(endPlace)){
+                return true;
+            }
+            //入队
+            for(String p:arivCities){
+                if(!visited.contains(p)){
+                    queue.add(p);
+                    visited.add(p);//标记
+                }
+            }
+        }
+        return false;
+    }
 }
+
+
+//    ArrayList<Set<String>> twoSets=new ArrayList<>();
+//        twoSets.add(new HashSet<>());
+//        twoSets.add(new HashSet<>());
+//        twoSets.get(0).add(startPlace);
+//        int indexFlag=0;
+//        while (true){
+//            for(String p:twoSets.get(indexFlag)){
+//                Set<String> arivCities= findNextArivCitySet(p);
+//                //若可到达
+//                if(arivCities.contains(endPlace)){
+//                    return true;
+//                }
+//                //将可到达地点加入下一个集合
+//                twoSets.get(1-indexFlag).addAll(arivCities);
+//            }
+//            twoSets.get(indexFlag).clear();
+//            indexFlag=1-indexFlag;
+//        }

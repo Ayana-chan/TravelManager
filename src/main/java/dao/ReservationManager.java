@@ -1,7 +1,6 @@
 package dao;
 
 import javafx.util.Pair;
-import object.Flight;
 import object.Reservation;
 
 import java.sql.Connection;
@@ -44,7 +43,7 @@ public class ReservationManager extends JDBCUtilsByDruid{
         return true;
     }
 
-    public ArrayList<Pair<String,String>> searchOwnReservation(String customerName) {
+    public ArrayList<Pair<String,String>> searchOwnJourney(String customerName) {
         ArrayList<Pair<String,String>> journeys = new ArrayList<>();
 
         Connection connection = null;

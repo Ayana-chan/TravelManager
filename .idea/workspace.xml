@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48ade961-f938-4f0f-a2ef-875812a4c703" name="Changes" comment="4 Managers done">
+    <list default="true" id="48ade961-f938-4f0f-a2ef-875812a4c703" name="Changes" comment="SearchOwnReservation done">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ui/ServiceToOut.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/FlightManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/FlightManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/ReservationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/ReservationManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dao/FlightManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dao/FlightManagerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/dao/ReservationManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dao/ReservationManagerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,8 +23,8 @@
       <list>
         <option value="Interface" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="JUnit3 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -73,6 +77,9 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="junit.framework.TestCase" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="dao" />
     </key>
@@ -80,8 +87,8 @@
       <recent name="dao" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ReservationManagerTest.testSearchOwnReservation">
-    <configuration name="BusManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.FlightManagerTest.testJudgeAccessible">
+    <configuration name="FlightManagerTest.testJudgeAccessible" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TravelManager" />
       <extension name="coverage">
         <pattern>
@@ -90,29 +97,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="dao" />
-      <option name="MAIN_CLASS_NAME" value="dao.BusManagerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BusManagerTest.testModifyBus" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="TravelManager" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="dao" />
-      <option name="MAIN_CLASS_NAME" value="dao.BusManagerTest" />
-      <option name="METHOD_NAME" value="testModifyBus" />
+      <option name="MAIN_CLASS_NAME" value="dao.FlightManagerTest" />
+      <option name="METHOD_NAME" value="testJudgeAccessible" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BusManagerTest.testSearchAllBus" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FlightManagerTest.testModifyFlight" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TravelManager" />
       <extension name="coverage">
         <pattern>
@@ -121,8 +113,24 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="dao" />
-      <option name="MAIN_CLASS_NAME" value="dao.BusManagerTest" />
-      <option name="METHOD_NAME" value="testSearchAllBus" />
+      <option name="MAIN_CLASS_NAME" value="dao.FlightManagerTest" />
+      <option name="METHOD_NAME" value="testModifyFlight" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FlightManagerTest.testRegisterFlight" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TravelManager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dao" />
+      <option name="MAIN_CLASS_NAME" value="dao.FlightManagerTest" />
+      <option name="METHOD_NAME" value="testRegisterFlight" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -161,11 +169,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FlightManagerTest.testJudgeAccessible" />
+        <item itemvalue="JUnit.FlightManagerTest.testModifyFlight" />
+        <item itemvalue="JUnit.FlightManagerTest.testRegisterFlight" />
         <item itemvalue="JUnit.ReservationManagerTest.testSearchOwnReservation" />
         <item itemvalue="JUnit.HotelManagerTest" />
-        <item itemvalue="JUnit.BusManagerTest.testModifyBus" />
-        <item itemvalue="JUnit.BusManagerTest.testSearchAllBus" />
-        <item itemvalue="JUnit.BusManagerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -180,7 +188,7 @@
       <workItem from="1669436687081" duration="9235000" />
       <workItem from="1669466869271" duration="9114000" />
       <workItem from="1669522245632" duration="6610000" />
-      <workItem from="1669552692858" duration="1773000" />
+      <workItem from="1669552692858" duration="7243000" />
     </task>
     <task id="LOCAL-00001" summary="First method done">
       <created>1669444146816</created>
@@ -231,7 +239,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669528816339</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="SearchOwnReservation done">
+      <created>1669554916485</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1669554916485</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,6 +269,7 @@
     <MESSAGE value="auto set numAvail. create 4 manager" />
     <MESSAGE value="FlightManager done" />
     <MESSAGE value="4 Managers done" />
-    <option name="LAST_COMMIT_MESSAGE" value="4 Managers done" />
+    <MESSAGE value="SearchOwnReservation done" />
+    <option name="LAST_COMMIT_MESSAGE" value="SearchOwnReservation done" />
   </component>
 </project>
