@@ -7,6 +7,7 @@ import dao.expection.TargetNotFoundException;
 import object.Bus;
 import object.Customer;
 import object.Flight;
+import object.Hotel;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -31,7 +32,7 @@ public class ServiceToOut {
             String choice0=sc.nextLine();
             System.out.println("");
 
-            if(choice0=="1") {
+            if(Objects.equals(choice0, "1")) {
                 ArrayList<Flight> flights = flightManager.searchAllFlight();
                 System.out.println("Result:");
                 for (Flight f : flights) {
@@ -39,7 +40,7 @@ public class ServiceToOut {
                 }
             }
 
-            else if(choice0=="2") {
+            else if(Objects.equals(choice0, "2")) {
                 System.out.println("Input Arguments");
                 System.out.print("FlightNum: ");
                 String flightNum = sc.nextLine();
@@ -61,7 +62,7 @@ public class ServiceToOut {
                 System.out.println("Success.");
             }
 
-            else if (choice0=="3") {
+            else if (Objects.equals(choice0, "3")) {
                 System.out.println("Choose Aim");
                 System.out.print("FlightNum: ");
                 String flightNum = sc.nextLine();
@@ -85,6 +86,7 @@ public class ServiceToOut {
                         flight.setFromCity(instr);
                     }
                     System.out.print("ArivCity: ");
+                    instr = sc.nextLine();
                     if (!Objects.equals(instr, "#")) {
                         flight.setArivCity(instr);
                     }
@@ -96,7 +98,9 @@ public class ServiceToOut {
                 }
             }
 
-            else if(choice0=="4") {
+            //-----------------------------
+
+            else if(Objects.equals(choice0, "4")) {
                 ArrayList<Bus> buses = busManager.searchAllBus();
                 System.out.println("Result:");
                 for (Bus f : buses) {
@@ -104,7 +108,7 @@ public class ServiceToOut {
                 }
             }
 
-            else if(choice0=="5") {
+            else if(Objects.equals(choice0, "5")) {
                 System.out.println("Input Arguments");
                 System.out.print("Location: ");
                 String flightNum = sc.nextLine();
@@ -122,12 +126,12 @@ public class ServiceToOut {
                 System.out.println("Success.");
             }
 
-            else if (choice0=="6") {
+            else if (Objects.equals(choice0, "6")) {
                 System.out.println("Choose Aim");
                 System.out.print("Location: ");
-                String flightNum = sc.nextLine();
+                String location = sc.nextLine();
                 try {
-                    Bus bus = busManager.searchBus(flightNum);
+                    Bus bus = busManager.searchBus(location);
                     System.out.println("Native Attribute: " + bus);
                     System.out.println("Input Arguments (Input \"#\" to ignore certain argument)");
                     System.out.print("Price: ");
@@ -148,6 +152,134 @@ public class ServiceToOut {
                 }
             }
 
+            //------------------------------------------
+
+            else if(Objects.equals(choice0, "7")) {
+                ArrayList<Hotel> hotels = hotelManager.searchAllHotel();
+                System.out.println("Result:");
+                for (Hotel f : hotels) {
+                    System.out.println(f);
+                }
+            }
+
+            else if(Objects.equals(choice0, "8")) {
+                System.out.println("Input Arguments");
+                System.out.print("Location: ");
+                String flightNum = sc.nextLine();
+                System.out.print("Price: ");
+                int price = Integer.parseInt(sc.nextLine());
+                System.out.print("NumRooms: ");
+                int numRooms = Integer.parseInt(sc.nextLine());
+
+                Hotel hotel = new Hotel(flightNum, price, numRooms);
+                try {
+                    hotelManager.registerHotel(hotel);
+                } catch (HaveRegisteredException e) {
+                    System.out.println("Failed. " + e.getMessage());
+                }
+                System.out.println("Success.");
+            }
+
+            else if (Objects.equals(choice0, "9")) {
+                System.out.println("Choose Aim");
+                System.out.print("Location: ");
+                String location = sc.nextLine();
+                try {
+                    Hotel hotel = hotelManager.searchHotel(location);
+                    System.out.println("Native Attribute: " + hotel);
+                    System.out.println("Input Arguments (Input \"#\" to ignore certain argument)");
+                    System.out.print("Price: ");
+                    instr = sc.nextLine();
+                    if (!Objects.equals(instr, "#")) {
+                        hotel.setPrice(Integer.parseInt(instr));
+                    }
+                    System.out.print("NumRooms: ");
+                    instr = sc.nextLine();
+                    if (!Objects.equals(instr, "#")) {
+                        hotel.setNumRooms(Integer.parseInt(instr));
+                    }
+
+                    hotelManager.modifyHotel(hotel);
+                    System.out.println("Success.");
+                } catch (TargetNotFoundException | InsufficientSpaceException e) {
+                    System.out.println("Failed. " + e.getMessage());
+                }
+            }
+
+            //--------------------------------------------------------------------
+
+            else if(Objects.equals(choice0, "10")) {
+                ArrayList<Customer> customers = customerManager.searchAllCustomer();
+                System.out.println("Result:");
+                for (Customer f : customers) {
+                    System.out.println(f);
+                }
+            }
+
+            else if(Objects.equals(choice0, "11")) {
+                System.out.println("Input Arguments");
+                System.out.print("CustName: ");
+                String custName = sc.nextLine();
+                System.out.print("CustID: ");
+                String custID = sc.nextLine();
+
+                Customer customer = new Customer(custName,custID);
+                try {
+                    customerManager.registerCustomer(customer);
+                } catch (HaveRegisteredException e) {
+                    System.out.println("Failed. " + e.getMessage());
+                }
+                System.out.println("Success.");
+            }
+
+            else if (Objects.equals(choice0, "12")) {
+                System.out.println("Choose Aim");
+                System.out.print("CustName: ");
+                String custName = sc.nextLine();
+                try {
+                    Customer customer = customerManager.searchCustomer(custName);
+                    System.out.println("Native Attribute: " + customer);
+                    System.out.println("Input Arguments (Input \"#\" to ignore certain argument)");
+                    System.out.print("CustID: ");
+                    instr = sc.nextLine();
+                    if (!Objects.equals(instr, "#")) {
+                        customer.setCustID(instr);
+                    }
+
+                    customerManager.modifyCustomer(customer);
+                    System.out.println("Success.");
+                } catch (TargetNotFoundException | InsufficientSpaceException e) {
+                    System.out.println("Failed. " + e.getMessage());
+                }
+            }
+
+            //------------------------------------------------------------------
+
+            else if(Objects.equals(choice0, "13")){
+
+            }
+
+            else if(Objects.equals(choice0, "14")){
+
+            }
+
+            else if(Objects.equals(choice0, "15")){
+
+            }
+
+            //------------------------------------------------------------------
+
+            else if(Objects.equals(choice0, "16")){
+
+            }
+
+            else if(Objects.equals(choice0, "17")){
+
+            }
+
+            else{
+                System.out.println("\nUnknown Choice.");
+            }
 
 
 
@@ -159,7 +291,8 @@ public class ServiceToOut {
 
     private void printMainMenu(){
         System.out.print("" +
-                "* Main Menu *\n" +
+                "-------------------\n" +
+                "*** Main Menu ***\n" +
                 "---\n" +
                 "1: Search Flights\n" +
                 "2: Add New Flight\n" +

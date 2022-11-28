@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48ade961-f938-4f0f-a2ef-875812a4c703" name="Changes" comment="ui 1">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/BusManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/BusManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/CustomerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/CustomerManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/FlightManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/FlightManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Main.java" afterDir="false" />
+    <list default="true" id="48ade961-f938-4f0f-a2ef-875812a4c703" name="Changes" comment="search one">
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/ServiceToOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/ServiceToOut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/dao/FlightManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dao/FlightManagerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +81,7 @@
       <recent name="dao" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.FlightManagerTest.testJudgeAccessibleBFS">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ui.Main" />
       <module name="TravelManager" />
@@ -167,8 +161,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.FlightManagerTest.testJudgeAccessibleBFS" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.FlightManagerTest.testJudgeAccessibleBFS" />
         <item itemvalue="JUnit.FlightManagerTest.testModifyFlight" />
         <item itemvalue="JUnit.FlightManagerTest.testRegisterFlight" />
         <item itemvalue="JUnit.ReservationManagerTest.testSearchOwnReservation" />
@@ -187,7 +181,7 @@
       <workItem from="1669466869271" duration="9114000" />
       <workItem from="1669522245632" duration="6610000" />
       <workItem from="1669552692858" duration="9274000" />
-      <workItem from="1669604099738" duration="7456000" />
+      <workItem from="1669604099738" duration="7828000" />
     </task>
     <task id="LOCAL-00001" summary="First method done">
       <created>1669444146816</created>
@@ -259,7 +253,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669562101716</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="search one">
+      <created>1669611693686</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1669611693686</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,7 +286,8 @@
     <MESSAGE value="SearchOwnReservation done" />
     <MESSAGE value="accessible done" />
     <MESSAGE value="ui 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="ui 1" />
+    <MESSAGE value="search one" />
+    <option name="LAST_COMMIT_MESSAGE" value="search one" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
