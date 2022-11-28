@@ -50,7 +50,7 @@ public class FlightManagerTest extends TestCase {
     public void testModifyFlight() {
         Flight flight1=new Flight("F1",4500,20,"西安","石家庄");
         Flight flight2=new Flight("F2",2000,30,"成都","南京");
-        Flight flight3=new Flight("F3",4000,90,"北京","杭州");
+        Flight flight3=new Flight("F3",4000,90,"南京","杭州");
         FlightManager flightManager=new FlightManager();
         try {
             flightManager.modifyFlight(flight1);
