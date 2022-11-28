@@ -1,9 +1,9 @@
 package dao;
 
+import JDBC.JDBCUtilsByDruid;
 import dao.expection.HaveRegisteredException;
 import dao.expection.InsufficientSpaceException;
 import dao.expection.TargetNotFoundException;
-import object.Bus;
 import object.Hotel;
 
 import java.sql.Connection;
@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class HotelManager extends JDBCUtilsByDruid{
+public class HotelManager extends JDBCUtilsByDruid {
     public void registerHotel(Hotel hotel) throws HaveRegisteredException {
         Connection connection = null;
         ResultSet resultSet=null;

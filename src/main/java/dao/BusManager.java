@@ -1,10 +1,10 @@
 package dao;
 
+import JDBC.JDBCUtilsByDruid;
 import dao.expection.HaveRegisteredException;
 import dao.expection.InsufficientSpaceException;
 import dao.expection.TargetNotFoundException;
 import object.Bus;
-import object.Flight;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class BusManager extends JDBCUtilsByDruid{
+public class BusManager extends JDBCUtilsByDruid {
     public void registerBus(Bus bus) throws HaveRegisteredException {
         Connection connection = null;
         ResultSet resultSet=null;

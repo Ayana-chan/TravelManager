@@ -1,5 +1,6 @@
 package dao;
 
+import JDBC.JDBCUtilsByDruid;
 import javafx.util.Pair;
 import object.Reservation;
 
@@ -9,7 +10,35 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ReservationManager extends JDBCUtilsByDruid{
+public class ReservationManager extends JDBCUtilsByDruid {
+    public ArrayList<Reservation> searchAllReservation(){
+        ArrayList<Reservation> reservations=new ArrayList<>();
+
+        Connection connection = null;
+        ResultSet resultSet=null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            connection=getConnection();
+
+            String sql="select * FROM reservations";
+            preparedStatement = connection.prepareStatement(sql);
+
+            resultSet=preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                Reservation newReservation=new Reservation(resultSet.getInt("resvKey"),resultSet.getString("custName"),
+                        resultSet.getInt("resvType"),resultSet.getString("resvObject"));
+                reservations.add(newReservation);
+            }
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            close(resultSet,preparedStatement,connection);
+        }
+        return reservations;
+    }
+
     /**
      *
      * @param reservation

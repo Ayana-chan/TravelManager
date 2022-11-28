@@ -4,12 +4,11 @@ import dao.*;
 import dao.expection.HaveRegisteredException;
 import dao.expection.InsufficientSpaceException;
 import dao.expection.TargetNotFoundException;
-import object.Bus;
-import object.Customer;
-import object.Flight;
-import object.Hotel;
+import javafx.util.Pair;
+import object.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -256,33 +255,78 @@ public class ServiceToOut {
             //------------------------------------------------------------------
 
             else if(Objects.equals(choice0, "13")){
-
+                ArrayList<Reservation> reservations = reservationManager.searchAllReservation();
+                System.out.println("Result:");
+                for (Reservation f : reservations) {
+                    System.out.println(f);
+                }
             }
 
             else if(Objects.equals(choice0, "14")){
+                System.out.println("Input Arguments");
+                System.out.print("CustName: ");
+                String custName = sc.nextLine();
+                System.out.print("ResvType: ");
+                int ResvType = Integer.parseInt(sc.nextLine());
+                System.out.print("ResvObject: ");
+                String ResvObject = sc.nextLine();
 
+                Reservation reservation = new Reservation(custName,ResvType,ResvObject);
+                reservationManager.addReservation(reservation);
+                System.out.println("Success.");
             }
 
             else if(Objects.equals(choice0, "15")){
+                System.out.print("CustName: ");
+                String custName = sc.nextLine();
 
+                ArrayList<Pair<String,String>> journeys = reservationManager.searchOwnJourney(custName);
+                if(journeys.isEmpty()){
+                    System.out.println("No Any Journey");
+                }else{
+                    for(Pair<String,String> j:journeys){
+                        System.out.println("From "+j.getKey()+" To "+j.getValue());
+                    }
+                }
             }
 
             //------------------------------------------------------------------
 
             else if(Objects.equals(choice0, "16")){
+                System.out.print("StartCity: ");
+                String startCity = sc.nextLine();
+                System.out.print("EndCity: ");
+                String endCity = sc.nextLine();
 
+                List<String> ans=flightManager.judgeAccessibleBFS(startCity,endCity);
+                if(ans==null){
+                    System.out.println("\nNot Accessible.");
+                }else{
+                    System.out.println("\nAccessible.");
+                    System.out.println("One of the Roads:");
+                    System.out.print("\t");
+                    for(int i=0;i<ans.size()-1;i++){
+                        System.out.print(ans.get(i)+"->");
+                    }
+                    System.out.println(ans.get(ans.size()-1));
+                }
             }
 
             else if(Objects.equals(choice0, "17")){
-
+                System.out.println("Bye.");
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                return;
             }
 
             else{
                 System.out.println("\nUnknown Choice.");
             }
 
-
-
+            //--------------------------------------------------
             //一次事务结束
             System.out.print("\nInput Any Character To Continue:");
             sc.nextLine();

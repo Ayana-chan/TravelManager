@@ -1,10 +1,10 @@
 package dao;
 
+import JDBC.JDBCUtilsByDruid;
 import dao.expection.HaveRegisteredException;
 import dao.expection.InsufficientSpaceException;
 import dao.expection.TargetNotFoundException;
 import object.Customer;
-import object.Flight;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class CustomerManager extends JDBCUtilsByDruid{
+public class CustomerManager extends JDBCUtilsByDruid {
     public void registerCustomer(Customer customer) throws HaveRegisteredException {
         Connection connection = null;
         ResultSet resultSet=null;

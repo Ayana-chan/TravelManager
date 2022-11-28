@@ -1,9 +1,8 @@
-package dao;
+package JDBC;
 
 import com.alibaba.druid.pool.DruidDataSourceFactory;
 
 import javax.sql.DataSource;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -27,10 +26,12 @@ public class JDBCUtilsByDruid {
             e.printStackTrace();
         }
     }
+
     //获取连接
     public static Connection getConnection() throws SQLException {
         return ds.getConnection();
     }
+
     //在数据库连接池技术中，close 不是真的断掉连接,而是把使用的 Connection 对象放回连接池
     public static void close(ResultSet resultSet, Statement statement, Connection connection) {
         try {

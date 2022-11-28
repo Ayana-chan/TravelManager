@@ -4,8 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48ade961-f938-4f0f-a2ef-875812a4c703" name="Changes" comment="search one">
+    <list default="true" id="48ade961-f938-4f0f-a2ef-875812a4c703" name="Changes" comment="12">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/BusManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/BusManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/CustomerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/CustomerManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/FlightManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/FlightManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/HotelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/HotelManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/JDBCUtilsByDruid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JDBC/JDBCUtilsByDruid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/ReservationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/ReservationManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/ServiceToOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/ServiceToOut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +107,7 @@
       <module name="TravelManager" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dao.*" />
+          <option name="PATTERN" value="JDBC.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -115,7 +123,7 @@
       <module name="TravelManager" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dao.*" />
+          <option name="PATTERN" value="JDBC.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -131,7 +139,7 @@
       <module name="TravelManager" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dao.*" />
+          <option name="PATTERN" value="JDBC.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -147,7 +155,7 @@
       <module name="TravelManager" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dao.*" />
+          <option name="PATTERN" value="JDBC.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -181,7 +189,7 @@
       <workItem from="1669466869271" duration="9114000" />
       <workItem from="1669522245632" duration="6610000" />
       <workItem from="1669552692858" duration="9274000" />
-      <workItem from="1669604099738" duration="7828000" />
+      <workItem from="1669604099738" duration="11260000" />
     </task>
     <task id="LOCAL-00001" summary="First method done">
       <created>1669444146816</created>
@@ -260,7 +268,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669611693686</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="12">
+      <created>1669613001792</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1669613001792</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -287,7 +302,8 @@
     <MESSAGE value="accessible done" />
     <MESSAGE value="ui 1" />
     <MESSAGE value="search one" />
-    <option name="LAST_COMMIT_MESSAGE" value="search one" />
+    <MESSAGE value="12" />
+    <option name="LAST_COMMIT_MESSAGE" value="12" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

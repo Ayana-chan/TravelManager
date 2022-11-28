@@ -1,5 +1,6 @@
 package dao;
 
+import JDBC.JDBCUtilsByDruid;
 import dao.expection.HaveRegisteredException;
 import dao.expection.InsufficientSpaceException;
 import dao.expection.TargetNotFoundException;
@@ -12,7 +13,7 @@ import java.sql.SQLException;
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class FlightManager extends JDBCUtilsByDruid{
+public class FlightManager extends JDBCUtilsByDruid {
     /**
      * 获得fromCity为startPlace的所有航班的目的地，即startPlace的所有下一站
      * @param fromCity
