@@ -12,14 +12,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class CustomerManager extends JDBCUtilsByDruid {
+public class CustomerManager {
     public void registerCustomer(Customer customer) throws HaveRegisteredException {
         Connection connection = null;
         ResultSet resultSet=null;
         PreparedStatement preparedStatement = null;
 
         try {
-            connection=getConnection();
+            connection=JDBCUtilsByDruid.getConnection();
 
             //查询是否已注册
             String sql_ask="select * FROM customers where custName=?";
@@ -41,7 +41,7 @@ public class CustomerManager extends JDBCUtilsByDruid {
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }finally {
-            close(resultSet,preparedStatement,connection);
+            JDBCUtilsByDruid.close(resultSet,preparedStatement,connection);
         }
     }
 
@@ -51,7 +51,7 @@ public class CustomerManager extends JDBCUtilsByDruid {
         PreparedStatement preparedStatement = null;
 
         try {
-            connection=getConnection();
+            connection=JDBCUtilsByDruid.getConnection();
 
             String sql_ask="select * FROM customers where custName=?";
             preparedStatement = connection.prepareStatement(sql_ask);
@@ -67,7 +67,7 @@ public class CustomerManager extends JDBCUtilsByDruid {
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }finally {
-            close(resultSet,preparedStatement,connection);
+            JDBCUtilsByDruid.close(resultSet,preparedStatement,connection);
         }
     }
 
@@ -79,7 +79,7 @@ public class CustomerManager extends JDBCUtilsByDruid {
         PreparedStatement preparedStatement = null;
 
         try {
-            connection=getConnection();
+            connection=JDBCUtilsByDruid.getConnection();
 
             String sql="select * FROM customers";
             preparedStatement = connection.prepareStatement(sql);
@@ -94,7 +94,7 @@ public class CustomerManager extends JDBCUtilsByDruid {
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }finally {
-            close(resultSet,preparedStatement,connection);
+            JDBCUtilsByDruid.close(resultSet,preparedStatement,connection);
         }
         return customers;
     }
@@ -105,7 +105,7 @@ public class CustomerManager extends JDBCUtilsByDruid {
         PreparedStatement preparedStatement = null;
 
         try {
-            connection=getConnection();
+            connection=JDBCUtilsByDruid.getConnection();
 
             //查询是否存在
             String sql_ask="select * FROM customers where custName=?";
@@ -131,7 +131,7 @@ public class CustomerManager extends JDBCUtilsByDruid {
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }finally {
-            close(resultSet,preparedStatement,connection);
+            JDBCUtilsByDruid.close(resultSet,preparedStatement,connection);
         }
     }
 }

@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class FlightManager extends JDBCUtilsByDruid {
+public class FlightManager {
     /**
      * 获得fromCity为startPlace的所有航班的目的地，即startPlace的所有下一站
      * @param fromCity
@@ -27,7 +27,7 @@ public class FlightManager extends JDBCUtilsByDruid {
         PreparedStatement preparedStatement = null;
 
         try {
-            connection=getConnection();
+            connection=JDBCUtilsByDruid.getConnection();
 
             String sql="select arivCity FROM flights where fromCity=?";
             preparedStatement = connection.prepareStatement(sql);
@@ -42,7 +42,7 @@ public class FlightManager extends JDBCUtilsByDruid {
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }finally {
-            close(resultSet,preparedStatement,connection);
+            JDBCUtilsByDruid.close(resultSet,preparedStatement,connection);
         }
         return arivCities;
     }
@@ -53,7 +53,7 @@ public class FlightManager extends JDBCUtilsByDruid {
         PreparedStatement preparedStatement = null;
 
         try {
-            connection=getConnection();
+            connection=JDBCUtilsByDruid.getConnection();
 
             //查询是否已注册
             String sql_ask="select * FROM flights where flightNum=?";
@@ -78,7 +78,7 @@ public class FlightManager extends JDBCUtilsByDruid {
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }finally {
-            close(resultSet,preparedStatement,connection);
+            JDBCUtilsByDruid.close(resultSet,preparedStatement,connection);
         }
     }
 
@@ -88,7 +88,7 @@ public class FlightManager extends JDBCUtilsByDruid {
         PreparedStatement preparedStatement = null;
 
         try {
-            connection=getConnection();
+            connection=JDBCUtilsByDruid.getConnection();
 
             //查询旧数据以保证numAvail不会变成负数
             String sql_ask="select * FROM flights where flightNum=?";
@@ -108,7 +108,7 @@ public class FlightManager extends JDBCUtilsByDruid {
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }finally {
-            close(resultSet,preparedStatement,connection);
+            JDBCUtilsByDruid.close(resultSet,preparedStatement,connection);
         }
     }
 
@@ -120,7 +120,7 @@ public class FlightManager extends JDBCUtilsByDruid {
         PreparedStatement preparedStatement = null;
 
         try {
-            connection=getConnection();
+            connection=JDBCUtilsByDruid.getConnection();
 
             String sql="select * FROM flights";
             preparedStatement = connection.prepareStatement(sql);
@@ -136,7 +136,7 @@ public class FlightManager extends JDBCUtilsByDruid {
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }finally {
-            close(resultSet,preparedStatement,connection);
+            JDBCUtilsByDruid.close(resultSet,preparedStatement,connection);
         }
         return flights;
     }
@@ -147,7 +147,7 @@ public class FlightManager extends JDBCUtilsByDruid {
         PreparedStatement preparedStatement = null;
 
         try {
-            connection=getConnection();
+            connection=JDBCUtilsByDruid.getConnection();
 
             //查询旧数据以保证numAvail不会变成负数
             String sql_ask="select * FROM flights where flightNum=?";
@@ -187,7 +187,7 @@ public class FlightManager extends JDBCUtilsByDruid {
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }finally {
-            close(resultSet,preparedStatement,connection);
+            JDBCUtilsByDruid.close(resultSet,preparedStatement,connection);
         }
     }
 

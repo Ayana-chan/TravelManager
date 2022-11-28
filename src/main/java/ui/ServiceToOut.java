@@ -328,8 +328,9 @@ public class ServiceToOut {
 
             //--------------------------------------------------
             //一次事务结束
-            System.out.print("\nInput Any Character To Continue:");
+            System.out.print("\nInput Any Character To Continue...");
             sc.nextLine();
+            System.out.println();
         }
     }
 

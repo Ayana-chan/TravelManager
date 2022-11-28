@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ReservationManager extends JDBCUtilsByDruid {
+public class ReservationManager {
     public ArrayList<Reservation> searchAllReservation(){
         ArrayList<Reservation> reservations=new ArrayList<>();
 
@@ -19,7 +19,7 @@ public class ReservationManager extends JDBCUtilsByDruid {
         PreparedStatement preparedStatement = null;
 
         try {
-            connection=getConnection();
+            connection=JDBCUtilsByDruid.getConnection();
 
             String sql="select * FROM reservations";
             preparedStatement = connection.prepareStatement(sql);
@@ -34,7 +34,7 @@ public class ReservationManager extends JDBCUtilsByDruid {
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }finally {
-            close(resultSet,preparedStatement,connection);
+            JDBCUtilsByDruid.close(resultSet,preparedStatement,connection);
         }
         return reservations;
     }
@@ -50,7 +50,7 @@ public class ReservationManager extends JDBCUtilsByDruid {
         PreparedStatement preparedStatement = null;
 
         try {
-            connection=getConnection();
+            connection=JDBCUtilsByDruid.getConnection();
 
             //查看是否有空位
             if(!judgeAvailable(reservation.getResvType(),reservation.getResvObject())){
@@ -67,7 +67,7 @@ public class ReservationManager extends JDBCUtilsByDruid {
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }finally {
-            close(resultSet,preparedStatement,connection);
+            JDBCUtilsByDruid.close(resultSet,preparedStatement,connection);
         }
         return true;
     }
@@ -80,7 +80,7 @@ public class ReservationManager extends JDBCUtilsByDruid {
         PreparedStatement preparedStatement = null;
 
         try {
-            connection = getConnection();
+            connection = JDBCUtilsByDruid.getConnection();
 
             //查找指定用户预订的所有航班
             String sql_resv = "select fromCity,arivCity " +
@@ -98,7 +98,7 @@ public class ReservationManager extends JDBCUtilsByDruid {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
-            close(resultSet, preparedStatement, connection);
+            JDBCUtilsByDruid.close(resultSet, preparedStatement, connection);
         }
         return journeys;
     }
@@ -116,7 +116,7 @@ public class ReservationManager extends JDBCUtilsByDruid {
         PreparedStatement preparedStatement = null;
 
         try {
-            connection=getConnection();
+            connection=JDBCUtilsByDruid.getConnection();
 
             //judge type
             String s1,s2;
@@ -153,7 +153,7 @@ public class ReservationManager extends JDBCUtilsByDruid {
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }finally {
-            close(resultSet,preparedStatement,connection);
+            JDBCUtilsByDruid.close(resultSet,preparedStatement,connection);
         }
     }
 }

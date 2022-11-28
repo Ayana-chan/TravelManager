@@ -12,14 +12,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class HotelManager extends JDBCUtilsByDruid {
+public class HotelManager {
     public void registerHotel(Hotel hotel) throws HaveRegisteredException {
         Connection connection = null;
         ResultSet resultSet=null;
         PreparedStatement preparedStatement = null;
 
         try {
-            connection=getConnection();
+            connection=JDBCUtilsByDruid.getConnection();
 
             //查询是否已注册
             String sql_ask="select * FROM hotels where location=?";
@@ -42,7 +42,7 @@ public class HotelManager extends JDBCUtilsByDruid {
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }finally {
-            close(resultSet,preparedStatement,connection);
+            JDBCUtilsByDruid.close(resultSet,preparedStatement,connection);
         }
     }
 
@@ -52,7 +52,7 @@ public class HotelManager extends JDBCUtilsByDruid {
         PreparedStatement preparedStatement = null;
 
         try {
-            connection=getConnection();
+            connection=JDBCUtilsByDruid.getConnection();
 
             String sql_ask="select * FROM hotels where location=?";
             preparedStatement = connection.prepareStatement(sql_ask);
@@ -69,7 +69,7 @@ public class HotelManager extends JDBCUtilsByDruid {
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }finally {
-            close(resultSet,preparedStatement,connection);
+            JDBCUtilsByDruid.close(resultSet,preparedStatement,connection);
         }
     }
 
@@ -81,7 +81,7 @@ public class HotelManager extends JDBCUtilsByDruid {
         PreparedStatement preparedStatement = null;
 
         try {
-            connection=getConnection();
+            connection=JDBCUtilsByDruid.getConnection();
 
             String sql="select * FROM hotels";
             preparedStatement = connection.prepareStatement(sql);
@@ -96,7 +96,7 @@ public class HotelManager extends JDBCUtilsByDruid {
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }finally {
-            close(resultSet,preparedStatement,connection);
+            JDBCUtilsByDruid.close(resultSet,preparedStatement,connection);
         }
         return hotels;
     }
@@ -107,7 +107,7 @@ public class HotelManager extends JDBCUtilsByDruid {
         PreparedStatement preparedStatement = null;
 
         try {
-            connection=getConnection();
+            connection=JDBCUtilsByDruid.getConnection();
 
             //查询旧数据以保证numAvail不会变成负数
             String sql_ask="select * FROM hotels where location=?";
@@ -145,7 +145,7 @@ public class HotelManager extends JDBCUtilsByDruid {
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }finally {
-            close(resultSet,preparedStatement,connection);
+            JDBCUtilsByDruid.close(resultSet,preparedStatement,connection);
         }
     }
 }

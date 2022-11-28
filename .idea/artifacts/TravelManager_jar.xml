@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TravelManager:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/TravelManager_jar</output-path>
+    <root id="archive" name="TravelManager.jar">
+      <element id="module-output" name="TravelManager" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../Maven/repository/com/mysql/mysql-connector-j/8.0.31/mysql-connector-j-8.0.31.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../Maven/repository/com/google/protobuf/protobuf-java/3.19.4/protobuf-java-3.19.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../Maven/repository/com/alibaba/druid/1.2.8/druid-1.2.8.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
