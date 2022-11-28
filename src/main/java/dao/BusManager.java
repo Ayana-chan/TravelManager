@@ -46,6 +46,33 @@ public class BusManager extends JDBCUtilsByDruid{
         }
     }
 
+    public Bus searchBus(String location){
+        Connection connection = null;
+        ResultSet resultSet=null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            connection=getConnection();
+
+            String sql_ask="select * FROM bus where location=?";
+            preparedStatement = connection.prepareStatement(sql_ask);
+            preparedStatement.setString(1,location);
+
+            resultSet=preparedStatement.executeQuery();
+
+            if(!resultSet.next()){
+                throw new TargetNotFoundException();
+            }
+            return new Bus(resultSet.getString("location"),resultSet.getInt("price"),
+                    resultSet.getInt("numBus"),resultSet.getInt("numAvail"));
+
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            close(resultSet,preparedStatement,connection);
+        }
+    }
+
     public ArrayList<Bus> searchAllBus(){
         ArrayList<Bus> buses=new ArrayList<>();
 

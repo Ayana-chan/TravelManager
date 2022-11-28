@@ -5,4 +5,10 @@ public class Main {
         ServiceToOut serviceToOut=new ServiceToOut();
         serviceToOut.service();
     }
+
+    private void printWelcomeMenu(){
+        System.out.println("" +
+                "TravelManager\n" +
+                "Produced by DeathWind\n");
+    }
 }

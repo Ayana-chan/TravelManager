@@ -9,10 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Queue;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class FlightManager extends JDBCUtilsByDruid{
@@ -77,6 +74,36 @@ public class FlightManager extends JDBCUtilsByDruid{
 
                 preparedStatement.executeUpdate();
             }
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            close(resultSet,preparedStatement,connection);
+        }
+    }
+
+    public Flight searchFlight(String flightNum) throws InsufficientSpaceException{
+        Connection connection = null;
+        ResultSet resultSet=null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            connection=getConnection();
+
+            //查询旧数据以保证numAvail不会变成负数
+            String sql_ask="select * FROM flights where flightNum=?";
+            preparedStatement = connection.prepareStatement(sql_ask);
+            preparedStatement.setString(1,flightNum);
+
+            resultSet=preparedStatement.executeQuery();
+
+            if(!resultSet.next()) {
+                throw new TargetNotFoundException();
+            }
+            return new Flight(resultSet.getString("flightNum"),resultSet.getInt("price"),
+                    resultSet.getInt("numSeats"),resultSet.getInt("numAvail"),
+                    resultSet.getString("fromCity"),resultSet.getString("arivCity"));
+
+
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }finally {
@@ -163,46 +190,91 @@ public class FlightManager extends JDBCUtilsByDruid{
         }
     }
 
-    public boolean judgeAccessible(String startPlace,String endPlace){
-        Set<String> visited=new HashSet<>();
-        Queue<String> queue=new LinkedBlockingQueue<>();
-        queue.add(startPlace);
-        while(!queue.isEmpty()){
-            //出队
-            String fromCity=queue.poll();
-            Set<String> arivCities=findNextArivCitySet(fromCity);
-            //若可找到
-            if(arivCities.contains(endPlace)){
-                return true;
+    /**
+     * 使用BFS查询可达路径，只能输出一条最短路径
+     * @param startPlace
+     * @param endPlace
+     * @return 可达的某一条最短路径。如果不可达，返回null
+     */
+    public List<String> judgeAccessibleBFS(String startPlace, String endPlace){
+        //原地，必可达
+        if(Objects.equals(startPlace, endPlace)){
+            List<String> ans=new ArrayList<>();
+            ans.add(startPlace);
+            ans.add(startPlace);
+            return ans;
+        }
+
+        //BFS遍历结点
+        class BFSNode{
+            public String pre;
+            public String city;
+
+            public BFSNode(String pre, String city) {
+                this.pre = pre;
+                this.city = city;
             }
-            //入队
+
+            @Override
+            public boolean equals(Object o) {
+                if (this == o) return true;
+                if (o == null || getClass() != o.getClass()) return false;
+                BFSNode bfsNode = (BFSNode) o;
+                return city.equals(bfsNode.city);
+            }
+
+            @Override
+            public int hashCode() {
+                return Objects.hash(city);
+            }
+
+            @Override
+            public String toString() {
+                return "BFSNode{" +
+                        "pre='" + pre + '\'' +
+                        ", city='" + city + '\'' +
+                        '}';
+            }
+        }
+
+        Set<BFSNode> visited=new HashSet<>();
+        Queue<BFSNode> queue=new LinkedBlockingQueue<>();
+        queue.add(new BFSNode("",startPlace));//startPlace只入队列不入visited
+        while(!queue.isEmpty()){
+//            System.out.println("queue: " + queue);
+            String fromCity=queue.poll().city;
+            Set<String> arivCities=findNextArivCitySet(fromCity);
+            //若找到
+            if(arivCities.contains(endPlace)){
+                List<String> ans=new ArrayList<>();
+                ans.add(endPlace);
+                ans.add(fromCity);
+                //遍历取路径
+                while(!Objects.equals(fromCity, startPlace)){
+//                    System.out.println("ans: "+ans);
+                    for (BFSNode node : visited) {
+                        if (Objects.equals(node.city, fromCity)) {
+                            fromCity = node.pre;
+                            ans.add(fromCity);
+                            break;
+                        }
+                    }
+                }
+                //ans是倒序的，要正回来
+                Collections.reverse(ans);
+                return ans;
+            }
+            //未找到，入队
             for(String p:arivCities){
-                if(!visited.contains(p)){
-                    queue.add(p);
-                    visited.add(p);//标记
+                if(!visited.contains(new BFSNode("", p))){
+                    BFSNode newNode=new BFSNode(fromCity, p);
+                    queue.add(newNode);
+                    visited.add(newNode);//标记
                 }
             }
         }
-        return false;
+        return null;
     }
 }
 
 
-//    ArrayList<Set<String>> twoSets=new ArrayList<>();
-//        twoSets.add(new HashSet<>());
-//        twoSets.add(new HashSet<>());
-//        twoSets.get(0).add(startPlace);
-//        int indexFlag=0;
-//        while (true){
-//            for(String p:twoSets.get(indexFlag)){
-//                Set<String> arivCities= findNextArivCitySet(p);
-//                //若可到达
-//                if(arivCities.contains(endPlace)){
-//                    return true;
-//                }
-//                //将可到达地点加入下一个集合
-//                twoSets.get(1-indexFlag).addAll(arivCities);
-//            }
-//            twoSets.get(indexFlag).clear();
-//            indexFlag=1-indexFlag;
-//        }

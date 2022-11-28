@@ -45,6 +45,32 @@ public class CustomerManager extends JDBCUtilsByDruid{
         }
     }
 
+    public Customer searchCustomer(String custName){
+        Connection connection = null;
+        ResultSet resultSet=null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            connection=getConnection();
+
+            String sql_ask="select * FROM customers where custName=?";
+            preparedStatement = connection.prepareStatement(sql_ask);
+            preparedStatement.setString(1,custName);
+
+            resultSet=preparedStatement.executeQuery();
+
+            if(!resultSet.next()){
+                throw new TargetNotFoundException();
+            }
+            return new Customer(resultSet.getString("custName"),resultSet.getString("custID"));
+
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            close(resultSet,preparedStatement,connection);
+        }
+    }
+
     public ArrayList<Customer> searchAllCustomer(){
         ArrayList<Customer> customers=new ArrayList<>();
 

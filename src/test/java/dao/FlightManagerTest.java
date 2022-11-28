@@ -6,6 +6,7 @@ import junit.framework.TestCase;
 import object.Flight;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class FlightManagerTest extends TestCase {
 
@@ -60,9 +61,9 @@ public class FlightManagerTest extends TestCase {
         }
     }
 
-    public void testJudgeAccessible() {
+    public void testJudgeAccessibleBFS() {
         FlightManager flightManager=new FlightManager();
-        boolean b = flightManager.judgeAccessible("西安","杭州");
-        System.out.println("西安to杭州： "+b);
+        List<String> b = flightManager.judgeAccessibleBFS("西安","杭州");
+        System.out.println("西安to杭州： \n"+b);
     }
 }
