@@ -1,6 +1,9 @@
 package dao;
 
 import JDBC.JDBCUtilsByDruid;
+import dao.expection.InsufficientSpaceException;
+import dao.expection.TargetNotFoundException;
+import dao.expection.UnknownReservationTypeException;
 import javafx.util.Pair;
 import object.Reservation;
 
@@ -9,6 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ReservationManager {
     public ArrayList<Reservation> searchAllReservation(){
@@ -44,7 +49,7 @@ public class ReservationManager {
      * @param reservation
      * @return false means "resvObject is not available (full)"
      */
-    public boolean addReservation(Reservation reservation){
+    public void addReservation(Reservation reservation){
         Connection connection = null;
         ResultSet resultSet=null;
         PreparedStatement preparedStatement = null;
@@ -54,7 +59,7 @@ public class ReservationManager {
 
             //查看是否有空位
             if(!judgeAvailable(reservation.getResvType(),reservation.getResvObject())){
-                return false;
+                throw new InsufficientSpaceException();
             }
 
             String sql="INSERT INTO reservations(custName,resvType,resvObject) VALUES (?,?,?) ";
@@ -69,11 +74,10 @@ public class ReservationManager {
         }finally {
             JDBCUtilsByDruid.close(resultSet,preparedStatement,connection);
         }
-        return true;
     }
 
-    public ArrayList<Pair<String,String>> searchOwnJourney(String customerName) {
-        ArrayList<Pair<String,String>> journeys = new ArrayList<>();
+    public Map<String,Pair<String,String>> searchOwnJourney(String customerName) {
+        Map<String,Pair<String,String>> journeys = new HashMap<>();
 
         Connection connection = null;
         ResultSet resultSet = null;
@@ -83,7 +87,7 @@ public class ReservationManager {
             connection = JDBCUtilsByDruid.getConnection();
 
             //查找指定用户预订的所有航班
-            String sql_resv = "select fromCity,arivCity " +
+            String sql_resv = "select flightNum,fromCity,arivCity " +
                     "from (reservations join flights on resvType=1 and resvObject=flightNum) " +
                     "where custName=?";
             preparedStatement = connection.prepareStatement(sql_resv);
@@ -93,7 +97,7 @@ public class ReservationManager {
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                journeys.add(new Pair<>(resultSet.getString("fromCity"),resultSet.getString("arivCity")));
+                journeys.put(resultSet.getString("flightNum"),new Pair<>(resultSet.getString("fromCity"),resultSet.getString("arivCity")));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -134,7 +138,7 @@ public class ReservationManager {
                     s2="location";
                     break;
                 default:
-                    throw new RuntimeException("Unexpected resvType.");
+                    throw new UnknownReservationTypeException();
             }
             String sql="select numAvail from "+ s1 +" where "+ s2 +"=?";
             preparedStatement = connection.prepareStatement(sql);
@@ -148,7 +152,7 @@ public class ReservationManager {
                 }
                 return false;//full
             }else{  //没有那个实体，resvObject对不上
-                throw new RuntimeException("No Corresponding resvType.");
+                throw new TargetNotFoundException();
             }
         }catch (SQLException e) {
             throw new RuntimeException(e);

@@ -32,7 +32,7 @@ public class JDBCUtilsByDruid {
         return ds.getConnection();
     }
 
-    //在数据库连接池技术中，close 不是真的断掉连接,而是把使用的 Connection 对象放回连接池
+    //把使用的 Connection 对象放回连接池
     public static void close(ResultSet resultSet, Statement statement, Connection connection) {
         try {
             if (resultSet != null) {
